@@ -465,7 +465,13 @@
         margin: var(--spacing-x-small) 0;
       }
 
-      #attributeList > ul > li label {
+      .attrEntry {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .attrEntry label {
+        order: 1;
         display: inline;
         position: relative;
         padding: 0 var(--spacing-small);
@@ -475,14 +481,41 @@
         font-weight: var(--label-small-font-weight);
       }
 
-      #attributeList > ul > li input {
+      .attrEntry .error.itemLevel {
+        order: 3;
+        padding: var(--spacing-xx-small) var(--spacing-large);
+        position: relative;
+        font-size: var(--paragraph-x-small-font-size);
+        line-height: var(--paragraph-x-small-line-height);
+        letter-spacing: var(--paragraph-x-small-letter-spacing);
+        font-weight: var(--paragraph-x-small-font-weight);
+        color: var(--color-error-500);
+        padding-left: var(--spacing-xxx-large);
+      }
+
+      .attrEntry .error.itemLevel.show:before {
+        content: "!";
+        height: 1rem;
+        min-width: 1rem;
+        color: var(--color-neutral-50);
+        background-color: #d20b5e;
+        border-radius: var(--border-radius-circle);
+        font-size: 0.75rem;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        text-align: center;
+        left: var(--spacing-large);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .attrEntry input {
+        order: 2;
         width: 100%;
         position: relative;
         height: 3.5rem;
         display: flex;
-        flex: 1 1 0%;
-        flex-direction: row;
-        align-items: center;
         transition: all 0s ease 0s;
         border-radius: var(--border-radius-large);
         border: 1px solid var(--color-neutral-500);
@@ -497,20 +530,20 @@
         outline: none;
       }
 
-      #attributeList > ul > li input:read-only {
+      .attrEntry input:read-only {
         cursor: not-allowed;
       }
 
-      #attributeList > ul > li input:focus {
+      .attrEntry input:focus {
         border: 1px solid var(--color-accent-600);
         box-shadow: inset 0 0 0 1px var(--color-accent-600);
       }
 
-      #attributeList > ul > li .helpLink {
+      .attrEntry .helpLink {
         display: none;
       }
 
-      #attributeList > ul > li label#errorMessage_label {
+      .attrEntry label#errorMessage_label {
         padding: 0;
         color: var(--color-error-500);
         font-size: var(--label-large-font-size);
@@ -519,7 +552,7 @@
         font-weight: var(--label-large-font-weight);
       }
 
-      #attributeList > ul > li #errorMessage {
+      .attrEntry #errorMessage {
         color: var(--color-error-500);
         font-size: var(--label-small-font-size);
         line-height: var(--label-small-line-height);
@@ -883,7 +916,113 @@
               />
             </svg>
           </div>
-          <div id="api" data-name="SelfAsserted"></div>
+          <div id="api" data-name="SelfAsserted">
+            <div class="buttons"></div>
+            <div class="intro">
+              <p>Please provide the following details.</p>
+            </div>
+            <form id="attributeVerification" action="JavaScript:void(0);">
+              <div id="passwordEntryMismatch" class="error pageLevel" style="display: none" aria-hidden="true">
+                The password entry fields do not match. Please enter the same password in both fields and try again.
+              </div>
+              <div id="requiredFieldMissing" class="error pageLevel" style="display: none" aria-hidden="true">
+                A required field is missing. Please fill out all required fields and try again.
+              </div>
+              <div
+                id="fieldIncorrect"
+                class="error pageLevel"
+                style="display: block"
+                aria-hidden="false"
+                role="alert"
+                aria-live="polite"
+                tabindex="1"
+              >
+                One or more fields are filled out incorrectly. Please check your entries and try again.
+              </div>
+              <div id="claimVerificationServerError" class="error pageLevel" style="display: none" aria-hidden="true"></div>
+              <div id="attributeList" class="attr">
+                <ul>
+                  <li class="Readonly">
+                    <div class="attrEntry validate">
+                      <label id="ReadOnlyEmail_label" for="ReadOnlyEmail">Email Address</label>
+                      <div class="error itemLevel" role="alert" aria-hidden="true" aria-label=""></div>
+                      <input
+                        id="ReadOnlyEmail"
+                        class="textInput"
+                        type="text"
+                        placeholder="Email Address"
+                        aria-label="Email Address"
+                        value="mdeberryfadv+100620237@gmail.com"
+                        aria-required="true"
+                        disabled="disabled"
+                        readonly="readonly"
+                        autofocus="autofocus"
+                      /><a class="helpLink tiny" href="javascript:void(0)">What is this?</a>
+                    </div>
+                  </li>
+                  <li class="Readonly">
+                    <div class="attrEntry validate">
+                      <label id="ReadOnlyDisplayName_label" for="ReadOnlyDisplayName">Name</label>
+                      <div class="error itemLevel" role="alert" aria-hidden="true" aria-label=""></div>
+                      <input
+                        id="ReadOnlyDisplayName"
+                        class="textInput"
+                        type="text"
+                        placeholder="Name"
+                        aria-label="Name"
+                        value="John Doe"
+                        disabled="disabled"
+                        readonly="readonly"
+                      /><a class="helpLink tiny" href="javascript:void(0)">What is this?</a>
+                    </div>
+                  </li>
+                  <li class="Password">
+                    <div class="attrEntry validate">
+                      <label id="newPassword_label" for="newPassword">New Password</label>
+                      <div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">
+                        The password cannot contain any of the following:<br />&nbsp;&nbsp;- three of the same character in succession
+                      </div>
+                      <input
+                        id="newPassword"
+                        class="textInput"
+                        type="password"
+                        placeholder="New Password"
+                        aria-label="New Password"
+                        title="Enter new password"
+                        autocomplete="new-password"
+                        aria-required="true"
+                      /><a class="helpLink tiny" href="javascript:void(0)" data-help="Enter new password">What is this?</a>
+                    </div>
+                  </li>
+                  <li class="Password">
+                    <div class="attrEntry validate">
+                      <label id="reenterPassword_label" for="reenterPassword">Confirm New Password</label>
+                      <div class="error itemLevel show" role="alert" aria-hidden="false" aria-label="">
+                        The password cannot contain any of the following:<br />&nbsp;&nbsp;- three of the same character in succession
+                      </div>
+                      <input
+                        id="reenterPassword"
+                        class="textInput"
+                        type="password"
+                        placeholder="Confirm New Password"
+                        aria-label="Confirm New Password"
+                        title="Confirm new password"
+                        autocomplete="new-password"
+                        aria-required="true"
+                      /><a class="helpLink tiny" href="javascript:void(0)" data-help="Confirm new password">What is this?</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="buttons">
+                <button id="continue" type="submit" form="attributeVerification" aria-disabled="false" aria-label="Create">Create</button>
+              </div>
+
+              <div class="verifying-modal">
+                <div id="verifying_blurb"></div>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </main>
