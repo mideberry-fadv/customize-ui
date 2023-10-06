@@ -297,18 +297,18 @@
       h1 {
         color: var(--color-accent-600);
         text-align: center;
-        font-size: 3rem;
-        line-height: 3.25rem;
-        letter-spacing: -0.025em;
-        font-weight: 400;
+        font-size: var(--heading-xx-large-font-size);
+        line-height: var(--heading-xx-large-line-height);
+        letter-spacing: var(--heading-xx-large-letter-spacing);
+        font-weight: var(--heading-xx-large-font-weight);
       }
 
       .intro h2 {
         text-align: center;
-        font-size: 2.5rem;
-        line-height: 3.25rem;
-        letter-spacing: -0.025em;
-        font-weight: 400;
+        font-size: var(--heading-x-large-font-size);
+        line-height: var(--heading-x-large-line-height);
+        letter-spacing: var(--heading-x-large-letter-spacing);
+        font-weight: var(--heading-x-large-font-weight);
       }
 
       .entry {
@@ -344,6 +344,7 @@
         width: 100%;
         margin-bottom: 1rem;
         border: 1px solid;
+        padding: 0 var(--spacing-medium);
       }
 
       button:focus-visible {
@@ -359,17 +360,20 @@
         border-radius: var(--border-radius-large);
       }
 
+      .buttons.verify button,
       button#continue {
         color: var(--color-neutral-50);
         background-color: var(--color-client-600);
         border-color: var(--color-client-600);
       }
 
+      .buttons.verify button:hover,
       button#continue:hover {
         background-color: var(--color-client-700);
         border-color: var(--color-client-700);
       }
 
+      .buttons.verify button:focus,
       button#continue:focus {
         background-color: var(--color-client-800);
         border-color: var(--color-client-800);
@@ -498,7 +502,7 @@
         height: 1rem;
         min-width: 1rem;
         color: var(--color-neutral-50);
-        background-color: #d20b5e;
+        background-color: var(--color-error-500);
         border-radius: var(--border-radius-circle);
         font-size: 0.75rem;
         font-weight: bold;
@@ -543,6 +547,7 @@
         display: none;
       }
 
+      .verificationErrorText.error,
       .attrEntry label#errorMessage_label {
         padding: 0;
         color: var(--color-error-500);
@@ -550,6 +555,19 @@
         line-height: var(--label-large-line-height);
         letter-spacing: var(--label-large-letter-spacing);
         font-weight: var(--label-large-font-weight);
+      }
+
+      .attrEntry .buttons {
+        order: 4;
+      }
+
+      .attrEntry .buttons button {
+        width: auto;
+        display: inline-block;
+      }
+
+      .attrEntry .buttons button:not(:last-of-type) {
+        margin-inline-end: var(--spacing-small);
       }
 
       .error.pageLevel {
@@ -563,6 +581,14 @@
         line-height: var(--label-small-line-height);
         letter-spacing: var(--label-small-letter-spacing);
         font-weight: var(--label-small-font-weight);
+      }
+
+      .verifyInput {
+        margin: var(--spacing-x-small) 0;
+      }
+
+      .verificationInfoText {
+        padding-bottom: var(--spacing-medium);
       }
 
       @media (max-width: 575px) {
