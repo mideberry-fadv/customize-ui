@@ -474,7 +474,7 @@
         flex-direction: column;
       }
 
-      .attrEntry label {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry label {
         order: 1;
         display: inline;
         position: relative;
@@ -485,7 +485,7 @@
         font-weight: var(--label-small-font-weight);
       }
 
-      .attrEntry .error.itemLevel {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry .error.itemLevel {
         order: 3;
         padding: var(--spacing-xx-small) var(--spacing-large);
         position: relative;
@@ -497,7 +497,7 @@
         padding-left: var(--spacing-xxx-large);
       }
 
-      .attrEntry .error.itemLevel.show:before {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry .error.itemLevel.show:before {
         content: "!";
         height: 1rem;
         min-width: 1rem;
@@ -514,7 +514,7 @@
         transform: translateY(-50%);
       }
 
-      .attrEntry input {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry input {
         order: 2;
         width: 100%;
         position: relative;
@@ -534,11 +534,11 @@
         outline: none;
       }
 
-      .attrEntry input:read-only {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry input:read-only {
         cursor: not-allowed;
       }
 
-      .attrEntry input:focus {
+      #attributeList > ul > li:not(.RadioSingleSelect) .attrEntry input:focus {
         border: 1px solid var(--color-accent-600);
         box-shadow: inset 0 0 0 1px var(--color-accent-600);
       }
