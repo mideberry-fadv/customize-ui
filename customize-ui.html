@@ -456,6 +456,35 @@
         font-weight: var(--label-large-font-weight);
       }
 
+      #codeVerification input {
+        order: 2;
+        width: 100%;
+        position: relative;
+        height: 3.5rem;
+        display: flex;
+        transition: all 0s ease 0s;
+        border-radius: var(--border-radius-large);
+        border: 1px solid var(--color-neutral-500);
+        background-color: var(--color-neutral-50);
+        color: var(--color-neutral-950);
+        padding: 0 var(--spacing-medium);
+        font-family: inherit;
+        font-size: var(--paragraph-medium-font-size);
+        line-height: var(--paragraph-medium-line-height);
+        letter-spacing: var(--paragraph-medium-letter-spacing);
+        font-weight: var(--paragraph-medium-font-weight);
+        outline: none;
+        margin-bottom: var(--spacing-small);
+      }
+      #codeVerification input:focus {
+        border: 1px solid var(--color-accent-600);
+        box-shadow: inset 0 0 0 1px var(--color-accent-600);
+      }
+      #codeVerification input:hover:not(:focus) {
+        border: 1px solid var(--color-neutral-700);
+        box-shadow: inset 0 0 0 1px var(--color-neutral-700);
+      }
+
       .attr > ul {
         list-style-type: none;
         padding: 0;
@@ -657,9 +686,9 @@
       .attr > ul > li.Password .attrEntry .buttons {
         order: 4;
       }
-      .attr > ul > li.TextBox.Readonly input[type="text"],
-      .attr > ul > li.Readonly.Readonly input[type="text"],
-      .attr > ul > li.Password.Readonly input[type="text"] {
+      .attr > ul > li.TextBox.Readonly input:read-only,
+      .attr > ul > li.Readonly.Readonly input:read-only,
+      .attr > ul > li.Password.Readonly input:read-only {
         cursor: not-allowed;
       }
 
@@ -720,6 +749,8 @@
         color: var(--color-neutral-800);
         border-color: var(--color-neutral-800);
       }
+
+      /*# sourceMappingURL=index.css.map */
     </style>
   </head>
   <body>
